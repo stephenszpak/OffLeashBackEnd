@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-app="dogpark">
+    <div ng-include="'app/partials/navbar.html'"></div>
+
+    <ul id="slide-out" class="side-nav" ng-controller="NavCtrl">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                </div>
+            </div>
+        </li>
+        <li ng-repeat="nav in navItems"><a href="{{nav.url}}">{{nav.name}}</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars" aria-hidden="true"></i></a>
+
+
+
+
+
+
+    <div class="container body-content">
+        <div ng-view>
+
+        </div>
+    </div>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTYUC9Vs2Luy8azl5p9qcgnWf2XlVuiRM&libraries=places"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/materialize")
+    @Scripts.Render("~/bundles/angular")
+    <script src="https://use.fontawesome.com/143af0fa6f.js"></script>
+</body>
+</html>

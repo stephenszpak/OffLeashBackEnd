@@ -1,0 +1,50 @@
+{
+	"users": {
+		"user1": {
+			"uid": "gTk7EeRExRQlnFB5tYltNPhhFkO2",
+			"username": "steve",
+			"dogname": "elly",
+			"dogimg": "",
+			"phone": "888-888-8888"
+		},
+		"user2": {
+			"uid": "LL0GNalawyRP51t53cCDv5AoH5g1",
+			"username": "b",
+			"dogname": "butts",
+			"dogimg": "",
+			"phone": "888-888-8888"
+		}
+	},
+	"favorites": {
+		"favorite1": {
+			"uid": "",
+			"placeid": "ChIJIQzftrNmZIgRcgx99a8_f_s",
+			"name": "",
+			"address": ""
+		},
+		"favorite2": {
+			"uid": "",
+			"placeid": "ChIJ4b8piI1mZIgRaLm5_PZJkOA",
+			"name": "",
+			"address": ""
+		}
+	},
+	"contacts": {
+		"contact1": {
+			"dogname": "Elanore",
+			"ownername": "Stephen",
+			"phone": "888-888-8888",
+			"email": "yup@yup.com",
+			"img": "images/elly.jpg",
+			"uid": "gTk7EeRExRQlnFB5tYltNPhhFkO2"
+		},
+		"contact2": {
+			"dogname": "Skippy",
+			"ownername": "Melanie",
+			"phone": "888-888-8888",
+			"email": "yup@yup.com",
+			"img": "images/skippy.jpg",
+			"uid": "gTk7EeRExRQlnFB5tYltNPhhFkO2"
+		}
+	}
+}

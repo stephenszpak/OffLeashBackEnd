@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div ng-repeat="favorites in favoriteList">
+        
+         <div class="col s12">
+                <div class="fav-card-size card small hoverable">
+                    <div class="card-content white-text">
+                        <img class="right fav-img-size" src="{{favorites.photo}}">
+                        <span class="card-title">{{favorites.title}}</span>
+                        <p>Address: {{favorites.address}}</p>
+                        <p>Rating: {{favorites.rating}}</p>
+                        <div class="card-action">
+                            <a href
+                            socialshare
+                            socialshare-provider="twitter"
+                            socialshare-text="Hey come meet me and {{user.dogname}} at {{favorites.title}}!"
+                            socialshare-hashtags="dogparks, imcool"
+                            socialshare-url="https://dog-park-2991f.firebaseapp.com">
+                                <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                            </a>
+                            <a href
+                            socialshare
+                            socialshare-provider="facebook"
+                            socialshare-type="Hey come meet me and {{user.dogname}} at {{favorites.title}}!"
+                            socialshare-url="https://dog-park-2991f.firebaseapp.com/">
+                                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+                            </a>
+                            <a href
+                            socialshare
+                            socialshare-provider="email"
+                            socialshare-subject="Come hang out at {{favorites.title}}"
+                            socialshare-body="I'm at {{favorites.name}} currently with {{user.dogname}}, come bring your pup.  The address is {{favorites.address}}">
+                                <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                            </a>
+                            <a href class="contact-btn" ng-click="deleteFavorite(favorites.id)">
+                                <i class="fa fa-minus-circle fa-2x" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

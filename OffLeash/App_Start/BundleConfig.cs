@@ -17,11 +17,11 @@ namespace OffLeash
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/materialize").Include(
-                      "~/Scripts/materialize.js",
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/materialize.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/main.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(

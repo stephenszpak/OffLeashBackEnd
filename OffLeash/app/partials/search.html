@@ -6,21 +6,9 @@
                 <input id="parkSearch" class="controls" ng-model="query" type="text" autocomplete="on">
             </div>
         </form>
-        <div class="card-container col s12 m4 l3">
+        <div>
             <!-- dog park cards/list -->
             <div ng-repeat="dogpark in markers">
-                <div class="card carde-size small hoverable">
-                    <div class="card-content">
-                        <span class="card-title white-text">{{dogpark.title}}</span>
-                            
-                            <p>{{dogpark.address}}</p>
-                       
-                        <span class="card-action">
-                            <a href ng-click="viewLocation(dogpark)" data-target="details"><i class="fa fa-info-circle fa-1x" aria-hidden="true"></i></a>
-                            <a href ng-click="addFavorite(dogpark)"><i class="fa fa-plus-circle fa-1x" aria-hidden="true"></i></a>
-                        </span>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- google map -->
@@ -29,8 +17,17 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
 <!-- Details Modal -->
-<div id="details" class="modal model-fixed-footer mod-height">
+<!--<div id="details" class="modal model-fixed-footer mod-height">
     <div id="viewdetails" class="modal-content">
         <h4>{{selectedPlace.title}}</h4>
         <p><h6>Address: </h6>{{selectedPlace.address}}</p>
@@ -45,4 +42,4 @@
             </ul>
         </div>
     </div>
-</div>
+</div>-->

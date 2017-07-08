@@ -1,41 +1,57 @@
-"use strict";
+﻿app.controller("AuthCtrl", ["$scope", "$http", "$location", function ($scope, $http, $location) {
 
-app.controller("AuthCtrl", function($scope, $rootScope, $location, AuthFactory, UserFactory) {
-	// $scope.login = {
-	// 	email: "e@e.com",
-	// 	password: "123123"
-	// };
+    // materialize modal init
+    $('.modal').modal();
 
-	// materialize modal init
-	$('.modal').modal();
+    $scope.email = "";
+    $scope.password = "";
 
-	if($location.path() === "/logout") {
-		AuthFactory.logout();
-		$rootScope.user = {};
-		$location.url("/auth");
-	}
+    $scope.registerEmail = "";
+    $scope.registerPassword = "";
+    $scope.registerConfirmPassword = "";
+    $scope.registerDogName = "";
+    $scope.registerFirstName = "";
 
-	let logMeIn = function(loginStuff) {
-		AuthFactory.authenticate(loginStuff).then(function(didLogin) {
-			return UserFactory.getUser(didLogin.uid);
-		}).then(function(userCreds) {
-			$rootScope.user = userCreds;
-			$scope.login = {};
-			$scope.register = {};
-			$location.url("/search");
-		});
-	};
+    $scope.login = function () {
+        $http({
+            method: 'POST',
+            url: "/Token",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            transformRequest: function (obj) {
+                var str = [];
+                for (var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: { grant_type: "password", email: $scope.email, password: $scope.password }
+        })
+            .then(function (result) {
+                console.log("result=", result);
 
-	$scope.registerUser = function(registerNewUser) {
-		AuthFactory.registerWithEmail(registerNewUser).then(function(didRegister) {
-			registerNewUser.uid = didRegister.uid;
-			return UserFactory.addUser(registerNewUser);
-		}).then(function(registerComplete) {
-			logMeIn(registerNewUser);
-		});
-	};
+                sessionStorage.setItem('token', result.data.access_token);
+                $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
 
-	$scope.loginUser = function(loginNewUser) {
-		logMeIn(loginNewUser);
-	};
-});
+                //$location.path("/home");
+            });
+    }
+
+    $scope.signup = function () {
+        $http({
+            method: 'POST',
+            url: "/api/account/register",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            transformRequest: function (obj) {
+                var str = [];
+                for (var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: { DogName: $scope.registerDogName, FirstName: $scope.registerFirstName, Email: $scope.registerEmail, Password: $scope.registerPassword, ConfirmPassword: $scope.registerConfirmPassword }
+        })
+            .then(function (result) {
+                console.log("result=", result);
+                //$location.path("/home");
+            });
+    }
+   
+}]);
